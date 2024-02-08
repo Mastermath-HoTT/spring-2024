@@ -11,3 +11,5 @@ Exercises can be done on paper or using the UniMath library in the Coq proof ass
   - Also make sure that the custom VS Code settings are not being applied whenever you want to work with vanilla Coq. This should be the case because the instructions have you apply them to a particular workspace.
 
 3. Compile UniMath yourself + use Emacs: https://github.com/UniMath/UniMath/blob/master/INSTALL.md
+- It is possible to mix up the instructions in 2 and 3, i.e. to compile UniMath yourself and use VSCode, or use the provided UniMath binaries with Emacs.
+- You will need to put the files that you work on *within* the `UniMath/UniMath` directory on your computer, to use their Emacs configuration files (or you can copy the Emacs configuration files).
