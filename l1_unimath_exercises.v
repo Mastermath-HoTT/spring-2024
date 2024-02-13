@@ -7,29 +7,14 @@ Require Export UniMath.Foundations.All.
 (* Show that Q follows from P ∧ (P → Q) *)
 
 Theorem modusPonens {P Q : UU} (h : P × (P → Q)) : Q.
-
-(*
-By writing the keyword ~Theorem~ we are telling Coq that we are about to write down the statement for a theorem. Lemma, Corollary, etc, and Definition (!) are all synonyms here.
-
-The next thing should be the name of the theorem. Really, it is the name that we want to give to the term that we will construct in the proof. The line above is of the form
-    ~Theorem modusPonens ... : Q.~
-This means that we are proving a theorem whose proof consists of constructing a term, that will be called modusPonens after construction in Q.
-
-The hypotheses (analogous to a contect) go where the ~...~ is. Here we have three hypotheses: P, Q, and h.
-
-Here we suppose that we have two types P and Q, and one term h of P × (P → Q).
-
-Writing {P Q : UU} means that if we want to use modusPonens in a corollary, we can write ~modusPonens h~ for some previously defined or assumed ~h : P × (P → Q)~ and Coq will figure out from h the types P and Q. Otherwise we would have to write ~modusPonens P Q h~.
-*)
-
 Proof.
-
-(* To start the interactive 'tactic' mode, write ~Proof.~*)
   induction h.
-  (* The `canonical terms of a product type are pairs. By using the tactic ~induction~ on h, we are telling Coq to assume that h is a pair.*)
   exact (pr2 pr1).
-  (* The tactic ~exact~ tells Coq that this is our answer for the goal. If we have something complicated after exact, we need to use parentheses. ~pr2 pr1~ is how we write function application.*)
 Qed.
+
+Search dirprod.
+
+Print modusPonens.
 
  (* or we could do *)
 
@@ -37,7 +22,7 @@ Theorem modusPonensAgain {P Q : UU} (h : P × (P → Q)) : Q.
 Proof.
   induction h as [p f].
   (* Above, we used ~induction h~ and it made up names for the two new terms. Here we assert which names we want.*)
-  set (q := f p).
+  pose proof ( f p ) as q.
   (* Here we can give a nice name to a derivable term and add it to the hypotheses.*)
   exact q.
 Qed.
@@ -49,19 +34,16 @@ Qed.
 Theorem firstProjection {P Q : UU} : (P × Q) → P.
 Proof.
   intro.
-  (* Usually, when we want to prove an implication / construct a function, we want to assume that we have a term of the domain. The ~intro~ tactic does that.*)
-  induction X as [p q].
-  exact p.
-Qed.
+  induction X.
+  exact pr1.
+Defined.
 
 (* or we could do *)
 
 Theorem firstProjectionAgain {P Q : UU} : (P × Q) → P.
 Proof.
-  intro p.
-  induction p as [p _].
-  (* Using the _ tells Coq that we don't care about the second term. We will see _ used in other similar ways.*)
-  exact p.
+  intros [p _].
+  assumption.
 Qed.
 
 (* Example 3 *)
