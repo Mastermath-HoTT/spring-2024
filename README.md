@@ -28,5 +28,6 @@ Exercises can be done on paper or using the UniMath library in the Coq proof ass
   support). As an experimental alternative, Neovim plugins
   [vscoq.nvim](https://github.com/tomtomjhj/vscoq.nvim) and
   [coq.lsp](https://github.com/tomtomjhj/coq-lsp.nvim) are clients for the
-  [VsCoq 2] and the [coq-lsp](https://github.com/ejgallego/coq-lsp/) language
-  servers, respectively.
+  [VsCoq 2](https://github.com/coq-community/vscoq) and the
+  [coq-lsp](https://github.com/ejgallego/coq-lsp/) language servers,
+  respectively.
