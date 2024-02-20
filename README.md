@@ -24,7 +24,7 @@ Exercises can be done on paper or using the UniMath library in the Coq proof ass
 - first, either [compile or install Coq and UniMath](https://github.com/UniMath/UniMath/blob/master/INSTALL.md);
 - then, install the [Coqtail vim plugin](https://github.com/whonore/Coqtail)
   (some Neovim distributions, such as
-  [Visimp](https://github.com/whonore/Coqtail), may already feature Coqtail
+  [Visimp](https://github.com/lucat1/visimp), may already feature Coqtail
   support). As an experimental alternative, Neovim plugins
   [vscoq.nvim](https://github.com/tomtomjhj/vscoq.nvim) and
   [coq.lsp](https://github.com/tomtomjhj/coq-lsp.nvim) are clients for the
