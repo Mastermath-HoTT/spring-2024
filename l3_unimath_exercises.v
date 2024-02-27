@@ -39,7 +39,7 @@ Defined.
 
 (* We make the parameter {A:UU} in paths explicit by writing @paths. *)
 
-Definition reflexive {A : UU} (R: A → A → UU) : UU := ∏ a : A, a = a.
+Definition reflexive {A : UU} (R: A → A → UU) : UU := ∏ a : A, R a a.
 
 Lemma reflexive_paths (A : UU): reflexive (@paths A).
 Proof.
@@ -50,7 +50,8 @@ Defined.
 
 (* Example 4 *)
 
-Definition symmetric {A : UU} (R: A → A → UU) : UU := ∏ (a b : A), a = b → b = a.
+Definition symmetric {A : UU} (R: A → A → UU) : UU := ∏ (a b : A),
+  R a b →  R b a.
 
 Lemma symmetric_paths (A : UU) : symmetric (@paths A).
 Proof.
@@ -63,7 +64,8 @@ Defined.
 
 (* Example 5 *)
 
-Definition transitive {A : UU} (R: A → A → UU) : UU := ∏ (a b c : A), a = b → b = c → a = c.
+Definition transitive {A : UU} (R: A → A → UU) : UU := ∏ (a b c : A),
+  R a b →  R b c →  R a c.
 
 Lemma transitive_paths (A : UU) : transitive (@paths A).
 Proof.
