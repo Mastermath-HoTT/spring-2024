@@ -20,6 +20,10 @@ Proof.
   apply idpath.
 Defined.
 
+Search (∏ A B : UU , ∏ f : A → B , ∏ x y : A , x = y → f x = f y).
+About maponpaths.
+About ap.
+
 (* Example 2 *)
 
 (* Note: this might hold definitionally based on how you defined add. If so, prove add n 0 = n instead.*)
@@ -64,6 +68,8 @@ Defined.
 (* Example 5 *)
 
 Definition transitive {A : UU} (R: A → A → UU) : UU := ∏ (a b c : A), a = b → b = c → a = c.
+
+Print paths.
 
 Lemma transitive_paths (A : UU) : transitive (@paths A).
 Proof.
@@ -176,3 +182,24 @@ Proof.
     exact p.
 Defined.
      
+Theorem thm (p : nat) (x : nat) : 1 = 0 → p = p.
+Proof.
+  intro q.
+  induction q.
+  apply idpath.
+Defined.
+
+Print thm.
+
+Print paths_rect.
+
+Theorem thm2 (n : nat) : n = n -> n = 5.
+Proof.
+  intro p.
+  induction p.
+
+
+mul n 0 = n.
+Proof.
+  induction n.
+  simpl.

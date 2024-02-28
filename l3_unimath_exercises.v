@@ -20,17 +20,30 @@ Proof.
   apply idpath.
 Defined.
 
+Search (∏ A B : UU , ∏ f : A → B, ∏ x y : A , x = y → f x = f y).
+
+About maponpaths.
+
+About ap.
 (* Example 2 *)
 
 (* Note: this might hold definitionally based on how you defined add. If so, prove add n 0 = n instead.*)
 
 Print add.
 
+Definition left_unit (n : nat) : add 0 n = n.
+Proof.
+  apply idpath.
+Defined.
+
 Definition right_unit (n : nat) : add n 0 = n.
 Proof.
+  apply idpath.
   induction n.
-  - apply idpath.
-  - simpl.
+  - unfold add.
+  apply idpath.
+  - unfold add.
+  simpl.
     apply ap.
     exact IHn.
 Defined.
@@ -39,7 +52,7 @@ Defined.
 
 (* We make the parameter {A:UU} in paths explicit by writing @paths. *)
 
-Definition reflexive {A : UU} (R: A → A → UU) : UU := ∏ a : A, a = a.
+Definition reflexive {A : UU} (R: A → A → UU) : UU := ∏ a : A, R a a.
 
 Lemma reflexive_paths (A : UU): reflexive (@paths A).
 Proof.
@@ -50,7 +63,7 @@ Defined.
 
 (* Example 4 *)
 
-Definition symmetric {A : UU} (R: A → A → UU) : UU := ∏ (a b : A), a = b → b = a.
+Definition symmetric {A : UU} (R: A → A → UU) : UU := ∏ (a b : A), R a b → R b a.
 
 Lemma symmetric_paths (A : UU) : symmetric (@paths A).
 Proof.
