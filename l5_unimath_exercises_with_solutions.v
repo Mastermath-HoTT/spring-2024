@@ -179,7 +179,14 @@ Defined.
 
 (* Show Thm 11.4.2 *)
 
-Theorem equiv_to_emb {A B : UU} (f : A ≃ B) {a a' : A}: (f a = f a') → (a = a').
+Lemma equiv_to_emb_lem_a {A B : UU} (f : A ≃ B) {a a' : A}: (a = a') → (f a = f a').
+Proof.
+  intro e.
+  induction e.
+  apply idpath.
+Defined.
+
+Lemma equiv_to_emb_lem_b {A B : UU} (f : A ≃ B) {a a' : A}: (f a = f a') → (a = a').
 Proof.
   intro p.
   induction f as [f w].
@@ -207,5 +214,14 @@ Proof.
   simpl in q1.
   assumption.
 Defined.
+
+Lemma equiv_to_emb_lem_c {A B : UU} (f : A ≃ B) {a a' : A} (p : a = a'): 
+equiv_to_emb_lem_b f (equiv_to_emb_lem_a f p) = p.
+Proof.
+  induction p.
+  unfold equiv_to_emb_lem_a.
+  simpl.
+  unfold equiv_to_emb_lem_b.
+  simpl.
 
 (* Show Thm *)
