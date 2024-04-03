@@ -1,0 +1,4 @@
+-arg -noinit
+-arg -indices-matter
+-arg -type-in-type
+-arg "-w -notation-overridden"
