@@ -245,15 +245,7 @@ The presence of $\Sigma$-types and a unit type allows us to conflate contexts an
     The syntactic category $\syncat{\T}$ has the structure of a category with families.
 \end{theorem}
 \begin{proof}
-    The underlying category is $\syncat{\T}$.
-
-    For the presheaf $\types : \C^\op \to \Set$, we set $\types(\Gamma)$ to be the types of $\T$ in context $\Gamma$. Given $s : \Gamma \to \Delta$, we set $\types(\Delta) \to \types(\Gamma)$ to be substitution by $s$, which we have previously denoted $-[s]$.
-
-    For the copresheaf $\terms : \int \types \to \Set$, we set $\terms(\Gamma, A)$ to be the terms of $A$ in context $\Gamma$. Given $s : \Delta \to \Gamma$, the function $\terms(f,A):  \terms (\Gamma, A) \to \terms (\Delta, \types(f)A)$ is also given by substitution by $s$.
-
-    We have objects $\pi_\Gamma : \Gamma.A \to \Gamma $ of $\C / \Gamma$. For the universal property, consider an arbitrary $s : \Delta \to \Gamma$. Then an $f \in \hom_{\C / \Gamma}(s, \pi_\Gamma)$ consists of (many components which must coincide with $s$ and) and one component 
-    \[ \Delta \vdash f : A[s], \]
-    which is exactly an element of $\terms(\types(s) A)$.
+    \hl{[fill in the blank]}
 \end{proof}
 
 \begin{theorem}
@@ -262,51 +254,17 @@ The presence of $\Sigma$-types and a unit type allows us to conflate contexts an
     Then there is a category with families on $\C$.
 \end{theorem}
 \begin{proof}
-    We construct the category with families as follows.
-    \begin{itemize}
-        \item The underlying category is $\C$.
-        \item The presheaf $\types$ is given by sending an object $\Gamma$ of $\C$ to the set of display maps with domain $\Gamma$. The contravariant functorial action is given by pullback: i.e. given $T \in \types (\Gamma)$ and $f: \Delta \to \Gamma$, set $\types (f) T := f^* T$.
-        \item The copresheaf $\terms$ is given by setting $\terms (\Gamma , T)$ to be the set of sections of $T$. The functorial action is again given by pullback.
-        \item For each object $\Gamma$ of $\C$ and $T \in \types (\Gamma)$, we take $\Gamma.T$ to be the domain of the display map $T$, and take $\pi_\Gamma$ to be $T$ itself. Now, under the assignments that we have made, the isomorphism we need to establish says that $\hom_{\C / \Gamma}(s, T)$ is in natural bijection with sections of $s^* T$. But this is given by the universal property of $s^* T$, and thus holds (and holds naturally). \qedhere
-    \end{itemize}
+    \hl{[fill in the blank]}
 \end{proof}
 
 \begin{theorem}
     Given a category with families $(\C, \types, \terms)$, there is a display structure $\D$ on $\C$.
 \end{theorem}
 \begin{proof}
-    We take $\D$ to be all morphisms of the form $\pi_\Gamma : \Gamma. A \to \Gamma$.
-
-    Let $s : \Delta \to \Gamma$. We want to show that $\pi_\Delta : \Delta. (\types(s) A) \to \Delta$ is a pullback of $\pi_\Gamma$ along $s$. Then we will say that $\pi_\Delta$ is the chosen pullback of $\pi_\Gamma$ along $s$.
-
-    First, let $\iota_x$ denote the composition of the following bijections (where the first and third are part of the definition of category with families, and the middle is functoriality of $\types$).
-    \[ \hom_{\C / \Delta}(x,\pi_\Delta)  \cong \terms(\types(x) \types(s) A) \cong  \terms(\types(sx) A) \cong \hom_{\C / \Gamma}(sx, \pi_\Gamma)\]
-
-    We need to complete the pullback square. Let $\tilde s$ denote $\iota_{\pi_\Delta} (1_{\pi_\Delta}) \in \hom_{\C / \Gamma}(s \pi_\Delta, \pi_\Gamma) $. Now we claim that the square below is a pullback.
-
-    To this end, consider a $x : Z \to \Delta$ and $y: Z \to \Gamma.A$.
-    \[
-         \begin{tikzcd}
-            Z \ar[dr,bend right,"x"] \ar[rr,bend left,"y"] & \Delta. (\types(s) A) \ar[r,"\tilde s"] \ar[d,"\pi_\Delta"] & \Gamma.A \ar[d,"\pi_\Gamma"]
-             \\ 
-             & \Delta \ar[r,"s"] & \Gamma
-         \end{tikzcd}
-    \]
-    Then we have a morphism $y: sx \to \pi_\Gamma$ in the slice $\C / \Gamma$, and so $\iota^{-1}_x y$ is a morphism $x \to \pi_\Delta$ in $\C/\Delta$. That is, $\iota^{-1}_x y$ is a morphism $Z \to \Delta. (\types(s) A)$ making the bottom-left triangle commute. Naturality of $\iota_x$ ensures that the upper triangle commutes. 
-    
-    That is, for any $z : x \to \pi_\Delta$, naturality produces the following commutative diagram where $z^*$ denotes precomposition.
-    \[
-         \begin{tikzcd}
-            \hom_{\C / \Delta}(\pi_\Delta,\pi_\Delta) \ar[r,"\iota_{\pi_\Delta}"] \ar[d,"z^*"] & \hom_{\C / \Gamma}(s\pi_\Delta, \pi_\Gamma) \ar[d,"z^*"]
-             \\ 
-             \hom_{\C / \Delta}(x,\pi_\Delta) \ar[r,"\iota_{x}"] & \hom_{\C / \Gamma}(sx, \pi_\Gamma)
-         \end{tikzcd}
-    \]
-    It tells us that $z^* \iota_{\pi_\Delta} 1_{\pi_\Delta}= \iota_x z^* 1_{\pi_\Delta}$. But $z^* \iota_{\pi_\Delta} 1_{\pi_\Delta} = z^* \tilde s = \tilde s z$ and $\iota_x z^* 1_{\pi_\Delta} = \iota_x z$. Thus, $\tilde s z = \iota_x z$. When $z = \iota^{-1}_x y$, we find that $\tilde s (\iota^{-1}_x y) = y$ and the upper triangle commutes.
-
-    
-    To show that this is unique, consider another $z : Z \to \Delta. (\types(s) A)$ making the diagram commute. If $\iota_x z = y$, then $z = \iota_x^{-1} y$ since $\iota_x$ is a bijection. But by our above calculation, $\iota_x z = \tilde s z$, and thus $\iota_x z = y$.
+    \hl{[fill in the blank]}
 \end{proof}
+
+
 
 \begin{exercise}[Open ended]
     What is the relationship between the two above constructions?
@@ -329,22 +287,14 @@ The presence of $\Sigma$-types and a unit type allows us to conflate contexts an
     Consider a category $\C$ with a universe $\pi_U : \tilde{U} \to U$. Let $\D$ denote the class of all pullbacks of $\pi_U$. Then $\D$ is a display structure.
 \end{theorem}
 \begin{proof}
-    We need to show that there exist chosen pullbacks of any $\pi_Gamma : \Gamma. A \to \Gamma$ along any $f: \Delta \to \Gamma$. We let the chosen pullback be $\Gamma_Delta : \Delta. (A f) \to \Delta$, i.e., the chosen pullback of $\pi_U$ along $A f$. By the pullback-pasting law this is a pullback.
+    \hl{[fill in the blank]}
 \end{proof}
 
 \begin{theorem}
     Consider a category $\C$ with a universe $\pi_U : \tilde{U} \to U$. Then $\C$ has the structure of a category with families.
 \end{theorem}
 \begin{proof}
-    We need to show that there exist chosen pullbacks of any $\pi_Gamma : \Gamma. A \to \Gamma$ along any $f: \Delta \to \Gamma$. We let the chosen pullback be $\Gamma_Delta : \Delta. (A f) \to \Delta$, i.e., the chosen pullback of $\pi_U$ along $A f$. By the pullback-pasting law this is a pullback.
-    We construct the category with families as follows.
-    \begin{itemize}
-        \item The underlying category is $\C$.
-        \item We set the presheaf $\types := \hom(- , U)$.
-        \item For each object $\Gamma$ of $\C$ and $A \in \types (\Gamma)$, we take $\pi_\Gamma : \Gamma.A \to \Gamma$ to be the specified pullback of $\pi_U$ along $A$.
-        \item The copresheaf $\terms$ is given by setting $\terms (\Gamma , T)$ to be the set of sections of $\pi_\Gamma$. The functorial action is given by pullback.
-        \item Now, under the assignments that we have made, the isomorphism we need to establish says that $\hom_{\C / \Gamma}(s, \pi_\Gamma)$ is in natural bijection with sections of $s^* (\pi_\Gamma)$. But this is given by the universal property of $s^* (\pi_\Gamma)$ (and is a nice diagram chase to sketch out). \qedhere
-    \end{itemize}
+    \hl{[fill in the blank]}
 \end{proof}
 
 \begin{exercise}[Open ended]
