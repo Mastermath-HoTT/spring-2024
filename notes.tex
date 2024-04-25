@@ -6,6 +6,7 @@
 \usepackage{tikz-cd}
 \usepackage{hyperref,cleveref}
 \usepackage{color,soul}
+\usepackage{mathabx}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -30,6 +31,10 @@
 \newcommand{\T}{\mathbb T}
 \newcommand{\C}{\mathcal C}
 \newcommand{\D}{\mathcal D}
+\newcommand{\A}{\mathcal A}
+\newcommand{\M}{\mathcal M}
+\newcommand{\W}{\mathcal W}
+\newcommand{\F}{\mathcal F}
 \newcommand{\Set}{{\mathcal S}et}
 \newcommand{\syncat}[1]{\C [#1]}
 % \newcommand{\defeq}{\coloneqq}
@@ -360,6 +365,98 @@ The presence of $\Sigma$-types and a unit type allows us to conflate contexts an
 \begin{exercise}
     Show that every pullback of $\pi_U$ is an isofibration. Show that every isofibration with small fibers is a pullback of $\pi_U$. You should use the Grothendieck construction.
 \end{exercise}
+
+\section{Type formers in display maps}
+
+In this section, fix a category $\C$ with display maps $\D$. In this section we explain how to interpret various type formers in a class of display maps. The rules that comprise a type former stipulate some structure involving contexts, types, and terms. Thus, we will interpret these rules as stipulating some structure in such a category with display maps involving objects (contexts), display maps (types), and morphisms (terms).
+
+\subsection{Products}
+
+\begin{theorem}
+    Consider a context $\Gamma$ of $\T$ and a simple type types $B$ in $\T$ (i.e., type in the empty context). Then in the syntactic category $\Gamma. A$ has the universal property of the product of $\Gamma$ and $A$.
+\end{theorem}
+\begin{proof}
+    First, we have maps $\pi_\Gamma : \Gamma. A \to A$ and $\pi_A : \Gamma. A \to A$ using the variable rule. Given any maps $\gamma : Z \to \Gamma$ and $a: Z \to A$ we can construct a map $\langle \gamma , a \rangle : Z \to A . B$, which is unique making the appropriate diagram commute.
+\end{proof}
+
+\begin{exercise}
+    Compare this with the substitution $B[\pi_*]$ where $\pi_* : A \to *$.
+\end{exercise}
+
+Thus, we interpret simple types $A$ as display maps with codomain $*$ and context extension $\Gamma.A$ of a context $\Gamma$ by $A$ as the product.
+
+\subsection{The unit type}
+
+% \begin{theorem}
+%     Suppose that a type theory $\T$ has a unit type. Then for every object $\Gamma$ of the syntactic category $\syncat{\T}$, there is a display map that is an isomorphism and that has codomain $\Gamma$.
+% \end{theorem}
+% \begin{proof}
+%     Call the unit type $\mathtt {unit}$.
+%     We claim that $\pi_\Gamma : \Gamma. \mathtt {unit} \to \Gamma$ is an isomorphism.
+%     The claimed inverse is the section $\mathtt{tt} : \Gamma \to \Gamma.\mathtt{unit}$ that has components $\Gamma \vdash x_i : \Gamma_i$ given by the variable rule for each $\Gamma_i$ in $\Gamma$ and final component $\Gamma \vdash \mathtt {tt} : \mathtt {unit}$ (where $\mathtt {tt}$ denotes the term of $\mathtt {unit}$ given in the introduction rule).
+%     We claim that $\pi_\Gamma \mathtt{tt} = 1_{\Gamma.\mathtt{unit}}$.
+%     The composition $\pi_\Gamma \mathtt{tt}$ has components $\Gamma \vdash x_i : \Gamma_i$ given by the variable rule for each $\Gamma_i$ in $\Gamma$ and final component $\Gamma, x : \mathtt {unit} \vdash \mathtt{tt} : \mathtt {unit}$.
+% \end{proof}
+
+Consider the rules for the unit type. Interpreted semantically, they say that there exists a unit type, i.e. a display map $\mathtt{unit} \to *$ (by formation), together with a section $\mathtt{tt} : * \to \mathtt{unit}$ (introduction). The elimination rule tells us that given any object $\Gamma$ and display map $\pi_{\Gamma.\mathtt{unit}}: \Gamma.\mathtt{unit}. D \to \Gamma.\mathtt{unit}$ together with a morphism $d : \Gamma \to \Gamma.\mathtt{unit}. D $ making the solid diagram below commute, there is a section $\overline d$ of $\pi_{\Gamma . \mathtt{unit}}$. The computation rule tells us that this section makes the diagram commute.
+\[
+     \begin{tikzcd}
+         && \Gamma.\mathtt{unit}. D \ar[d,"\pi_{\Gamma.\mathtt{unit}}"] \\
+         \Gamma \ar[rr,"\Gamma.\mathtt{tt}"] \ar[urr," d"] && \Gamma.\mathtt{unit} \ar[u,bend left,"\overline d",dotted]
+     \end{tikzcd}
+\]
+
+\begin{theorem}
+    Any terminal object of $\C$ gives an interpretation of the unit type.
+\end{theorem}
+\begin{proof}
+    If we take $\mathtt {unit}$ to be $*$ and $\mathtt{tt}$ to be $1_*$, then $\Gamma.\mathtt {unit} \cong \Gamma$. Thus, we take $\overline d := d(\Gamma. \mathtt{tt})^{-1} $.
+\end{proof}
+
+\section{Dependent sum types}
+
+Consider the rules in the empty context for the $\Sigma$ type. Interpreted semantically, they say that for every display map $\pi_\Gamma : \Gamma. A \to \Gamma$, there is a simple type $\Sigma (\Gamma. A) \to *$. This has the property that for any display map $\pi_{\Sigma (\Gamma. A)} : \Sigma (\Gamma. A) . B \to \Sigma (\Gamma. A)$ and any morphism ...
+
+\section{Homotopic models of type theory}
+
+\begin{definition}
+    Consider a category $\C$ with two morphisms $c: A \to B$ and $f: X \to Y$. Say that $f$ has the \emph{right lifting property with respect to $c$} (resp. that $c$ has the \emph{left lifting property with respect to $f$}) if for every $x : A \to X$ and $y : B \to Y$ making the solid square below commute, there is a morphism $\ell: B \to X$ making the whole diagram commute.
+    \[
+         \begin{tikzcd}
+             A \ar[r,"x"] \ar[d,"c"] & X \ar[d,"f"]
+             \\ 
+             B \ar[r,"y"] \ar[ur,"\ell",dotted] & Y
+         \end{tikzcd}
+    \]
+    We say that a square such as the above solid square is a \emph{lifting problem}, and such an $\ell$ is a \emph{solution}. We write $c \boxslash f$.
+
+    Given a classes $\A$ and $\D$ of morphisms of $\C$, we write $\A \boxslash \C$ and say that $\A$ has the \emph{left lifting property with respect to $\C$} or that $\C$ has the \emph{right lifting property with respect to $\A$} if $c \boxslash f$ for every $c \in \A$ and $f \in \D$.
+
+    Given a class $\A$, we write $\A^\boxslash$ for the class of morphisms $f$ such that $c \boxslash f$ for every $c \in \A$. That is, $\A^\boxslash$ is the largest class such that $\A \boxslash \A^\boxslash$. Dually, given a class $\D$, we write $^\boxslash \D$ for class of morphisms $c$ such that $c \boxslash f$ for every $f \in \D$.
+\end{definition}
+
+\begin{theorem}
+    Consider a category $\C$ with all finite limits and a class $\A$ of morphisms of $\C$. Then $\A^\boxslash$ has the following properties.
+    \begin{enumerate}
+        \item $\D$ is closed under isomorphisms,
+        \item $\D$ contains all isomorphisms,
+        \item $\D$ is closed under composition,
+        \item $\D$ is stable under pullbacks.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    This is basically the HW.
+\end{proof}
+
+\begin{example}
+    A model structure $(\C, \W, \F)$ on a category $\M$ consists of three classes of morphisms, $\C$, $\W$, and $\F$ such that $\F = (\C \cap \W)^\boxslash$ (among other requirements). We call $\F$ the \emph{fibrations} and $(\C \cap \W)$ the \emph{acyclic (or trivial) cofibrations}. Thus the class of fibrations in any model category satisfies the hypotheses of the above theorem.
+    
+    We say that an object $X$ of $\M$ is \emph{fibrant} if the unique morphism from $X$ to the terminal object is a fibration. If every object of $\M$ is fibrant, then $(\M, \F)$ is a clan. 
+\end{example}
+
+\begin{definition}
+    Given a category $\C$ with a class of display maps $\D$, say that an object $X$ is \emph{fibrant} if the unique map from $X$ to the terminal object is in $\D$.
+\end{definition}
 
 \bibliographystyle{alpha}
 \bibliography{literature}
