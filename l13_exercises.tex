@@ -386,15 +386,7 @@ We ask that all operations are stable under pullback because in the type theory 
 \end{theorem}
 
 \begin{proof}
-    By \emph{projection}, we mean a morphism that is obtained by iterated applications of the variable rule. There are obvious projections $\Gamma, \Delta, \Delta' \to \Gamma, \Delta$ and $\Gamma, \Delta, \Delta' \to \Gamma, \Delta'$. Thus we have a square as below.
-    \[
-         \begin{tikzcd}
-             \Gamma, \Delta, \Delta' \ar[r," "] \ar[d," "] \pullback & \Gamma, \Delta' \ar[d," "]
-             \\ 
-             \Gamma, \Delta \ar[r," "] & \Gamma
-         \end{tikzcd}
-    \]
-    Given an object $Z$ with morphisms to $\Gamma, \Delta$ and $\Gamma, \Delta'$ making the appropriate square commute, one can construct a unique morphism $Z \to \Gamma, \Delta, \Delta'$ making the appropriate triangles commute.
+    \hl{[fill in the blank]}
 \end{proof}
 
 % \subsection{Products}
@@ -457,9 +449,7 @@ Moreover, this needs to be stable under substitution in $\Gamma$. That is, given
     Suppose that for the terminal object $*$, the identity $1_* : * \to *$ is a display map. Then $(\C,\D)$ gives an interpretation of the unit type.
 \end{theorem}
 \begin{proof}
-    If we take $\mathtt {unit}$ to be $*$ and $\mathtt{tt}$ to be $1_*$, then we can take $\Gamma.\mathtt{tt}$ to be the identity $1_\Gamma$.
-    
-    Thus, we take $\overline d := d$. Then we clearly have $\overline{s^* d} = s^* \overline d$ for any $s$.
+    \hl{[fill in the blank]}
 \end{proof}
 
 We want our category with display maps to model terminal objects, so we often assume the hypothesis of the preceding theorem. But then we find the following.
@@ -468,15 +458,7 @@ We want our category with display maps to model terminal objects, so we often as
     The identity $1_* : * \to *$ is a display map if and only if all isomorphisms are display maps.
 \end{lemma}
 \begin{proof}
-    The ``if" part is obvious. For the ``only if" part, recall that $\D$ is required to be stable under pullback and that
-    given any isomorphism $i: X \to Y$, the following is a pullback square.
-    \[
-         \begin{tikzcd}
-             X \ar[r,""] \ar[d,"i"] \pullback & * \ar[d," "]
-             \\ 
-             Y \ar[r," "] & *
-         \end{tikzcd}
-    \]
+    \hl{[fill in the blank]}
 \end{proof}
 
 
@@ -528,16 +510,14 @@ Moreover, we ask that this structure is stable under pullback (up to isomorphism
     If $\D$ is closed under composition, then $(\C, \D)$ models strong $\Sigma$-types (and thus it also models $\Sigma$-types without the uniqueness rule).
 \end{theorem}
 \begin{proof}
-    First, suppose that $\D$ is closed under composition. Given a pair of display maps $\Gamma.A . B \xrightarrow{\pi_{\Gamma.A}} \Gamma. A  \xrightarrow{\pi_{\Gamma}} \Gamma$, we take $\Sigma_A B$ to be $\Gamma.A . B$ and we take $\pi_\Gamma : \Sigma_A B \to \Gamma$ to be the composition of $\Gamma.A . B \xrightarrow{\pi_{\Gamma.A}} \Gamma. A  \xrightarrow{\pi_{\Gamma}} \Gamma$.
-
-    Then we take $\langle \rangle$ to be the identity, and we find that $ s^* (\Sigma_A B ) \cong \Sigma_{s^* A} (s ^* B)$ since they are both the pullback $s^* (\Gamma.A . B)$.
+    \hl{[fill in the blank]}
 \end{proof}
 
 \begin{theorem}
     If $\D$ is closed under isomorphism and $(\C, \D)$ models strong $\Sigma$-types, then $\D$ is closed under composition.
 \end{theorem}
 \begin{proof}
-    Consider two composable display maps $\Gamma.A . B \xrightarrow{\pi_{\Gamma.A}} \Gamma. A  \xrightarrow{\pi_{\Gamma}} \Gamma$. Since their composition is isomorphic to $\pi_\Gamma : \Sigma_A B \to \Gamma$, we find that $\D$ is closed under composition.
+    \hl{[fill in the blank]}
 \end{proof}
 
 \section{Dependent product types}
@@ -579,7 +559,7 @@ We also ask that this operation is stable under substitution/pullback and that s
         \hom_{\C / \Gamma.A} (1, 1_{\Gamma}^* d) \ar[r,"\lambda"] & \hom_{\C / \Gamma} (1 , {\pi(1_\Gamma^* d,1_\Gamma^* e)}) \ar[r,"i^{-1}"] & \hom_{\C / \Delta} (1 ,  1_\Gamma^* {\pi(d,e)})
      \end{tikzcd}
 \]
-\[
+\[\hspace{-1em}
      \begin{tikzcd}[column sep=small]
         \hom_{\C / (st)^*(\Gamma . A)} (1, (st)^*d) \ar[d,"\cong"] \ar[r, "\lambda"] &
         \hom_{\C / \Epsilon} (1 , {\pi((st)^*d,(st)^*e)})  \ar[r,"i^{-1}"]
@@ -612,7 +592,7 @@ However, notice that the second diagram above is an instance of the first.
          \hom_{\C / s^*(\Delta . A)} (1, s^* d) \ar[r,"\lambda"] & \hom_{\C / \Delta} (1 ,  {\pi(s^*d,s^*e)})
      \end{tikzcd}
 \]
-\[
+\[ \hspace{-4em}
      \begin{tikzcd}[column sep=small]
         \hom_{\C / (st)^*(\Gamma . A)} (1, (st)^*d) \ar[d,"\cong"] \ar[r, "\lambda"] &
         \hom_{\C / \Epsilon} (1 , {\pi((st)^*d,(st)^*e)})  \ar[r,"i^{-1}"]
@@ -636,37 +616,7 @@ However, notice that the second diagram above is an instance of the first.
 \end{theorem}
 
 \begin{proof}
-Suppose first that $(\C, \D)$ is closed under local exponentials.
-Then for any pair of display maps $\Gamma.A . B \xrightarrow{d} \Gamma. A  \xrightarrow{e} \Gamma$, there is a display map $\pi(d,e) : \Pi_A B \to \Gamma$.
-
-For any $t : \Epsilon \to \Delta$, we have that
-\begin{align*}
-    \hom_{\C / \Delta} (t, s^* {\pi(d,e)}) &\cong \hom_{\C / \Gamma} (st, {\pi(d,e)}) \\
-    &\cong \hom_{\C / \Gamma . A} (e^* (st), d) \\
-    &\cong \hom_{\C / s^* (\Gamma . A)} ((s^* e)^* t, s^* d) \\
-    &\cong \hom_{\C / \Delta}(t, \pi(s^* d, s^* e))
-\end{align*}
-(where the first and third bijections are by the universal property of pullback and the second and fourth are from the universal property of $\pi$)
-so by the Yoneda lemma, we find that $s^* {\pi(d,e)} \cong \pi(s^* d, s^* e)$.
-
-We find $\lambda$ as a special case of the universal property of $\pi(d,e)$ (i.e., when $s := 1_\Gamma$).
-
-The naturality of the universal property for $\pi$ makes the required diagrams for $\lambda$ commute.
-
-
-Suppose now that $(\C, \D)$ models $\Pi$-types.
- 
-Notice that because we have such a $\lambda$ for each composable pair of display maps, we can use the pair $s^* (\Gamma.A . B) \xrightarrow{s^* d} s^* (\Gamma. A)  \xrightarrow{s^* e} \Delta$ for any $s : \Delta \to \Gamma$ and obtain a bijection $\lambda_s : \hom_{\C / s^*(\Gamma . A)} (1, s^* d) \xrightarrow{\lambda} \hom_{\C / \Delta} (1 , {\pi(s^* d,s^* e)}) $.
-Now we let $\lambda'_s$ denote the following composition of bijections
-\begin{align*}
-    \hom_{\C / \Gamma . A} (e^* s,  d) &\cong
-    \hom_{\C / s^*(\Gamma . A)} (1, s^* d) 
-    \\&\xrightarrow{\lambda_s} \hom_{\C / \Delta} (1 , {\pi(s^* d,s^* e)})\\
-     &\xrightarrow{(i^{-1})_*} \hom_{\C / \Delta} (1 , s^* {\pi( d, e)}) \\
-     &\cong \hom_{\C / \Gamma} (s, {\pi(d,e)})
-\end{align*}
-where the unlabelled bijections use the universal property of pullback.
-The naturality of $\lambda_s'$ follows from the required commutative squares for $\lambda$.
+    \hl{[fill in the blank]}
 \end{proof}
 
 % \section{Identity types}
