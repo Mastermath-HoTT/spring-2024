@@ -734,7 +734,23 @@ The computation rule says exactly that the upper triangle commutes.
     Every morphism $r_A: A \to \Id(A)$ has the left lifting property against every display map.
 \end{lemma}
 \begin{proof}
-    \hl[fill in the blank]
+    We want to produce a lift in any square of the following form, where $p$ is a display map.
+    \[
+         \begin{tikzcd}
+             A \ar[r,"x"] \ar[d,"r_A"] & E \ar[d,"p"]
+             \\ 
+             \Id(A) \ar[r,"y"] & B
+         \end{tikzcd}
+    \]
+    We take the pullback of $p$ and $y$ to produce the following diagram.
+    \[
+        \begin{tikzcd}
+            A \ar[rr,"x", bend left] \ar[d,"r_A"] \ar[r, dashed] & \bullet \pullback \ar[r] \ar[d] & E \ar[d,"p"]
+            \\ 
+            \Id(A) \ar[rr,"y"', bend right] \ar[r,equal] \ar[ur, dotted] & \Id(A) \ar[r, "y"] & B
+        \end{tikzcd}
+   \]
+   The dashed arrow is induced by the universal property of the pullback. Since the pullback of $p$ is a display map, the existence of the dotted arrow making the diagram commute is ensured by the elimination and computation rules of the identity type. One can check that the composition of arrows $\Id(A) \to E$ in the above diagram is indeed a solution to the original lifting problem.
 \end{proof}
 
 Thus, to ask for a model of $\Id$-types (ignoring the requirement that it is stable under pullback) is to ask that in any slice $\C / \Gamma$, a display map $A$ (that is, an object of $\C / \Gamma$ that is an element of $\D$) has a factorization 
@@ -748,7 +764,7 @@ That is, for any $s: \Delta \to \Gamma$,
 (3) $s^* r_A$ lifts against any display map.
 
 \begin{exercise}
-    \hl{Check that requirements (1) and (2) of the above stability are automatic.}
+    Check that requirements (1) and (2) of the above stability are automatic.
 \end{exercise}
 
 \begin{definition}
@@ -805,7 +821,7 @@ A model of identity types is equivalent to a certain kind of \emph{weak factoriz
 \end{example}
 
 \begin{exercise}
-    \hl{Check that for path objects,}
+    Check that for path objects,
     \begin{enumerate}
         \item nice implies coherent,
         \item functorial implies coherent,
@@ -836,7 +852,7 @@ A \emph{pseudo-relation} on an object $A$ of category consists of an object $R$ 
 \end{lemma}
 
 \begin{proof}
-    (HW 4)
+    (HW4)
 \end{proof}
 
 \begin{lemma}
@@ -881,7 +897,7 @@ A \emph{pseudo-relation} on an object $A$ of category consists of an object $R$ 
 \end{definition}
 
 \begin{exercise}
-    \hl{Check that a functorial factorization is coherent.}
+    Check that a functorial factorization is coherent.
 \end{exercise}
 
 \begin{lemma}
@@ -917,7 +933,7 @@ A \emph{pseudo-relation} on an object $A$ of category consists of an object $R$ 
 \end{definition}
 
 \begin{exercise}
-    \hl{Check that coherent (resp. functorial) path objects produce coherent (resp. functorial) mapping path space factorizations.}
+    Check that coherent (resp. functorial) path objects produce coherent (resp. functorial) mapping path space factorizations.
 \end{exercise}
 
 \begin{example}
@@ -937,7 +953,7 @@ A \emph{pseudo-relation} on an object $A$ of category consists of an object $R$ 
 \end{definition}
 
 \begin{exercise}
-    \hl{Check} that path objects in a type theoretic weak factorization system satisfy the hypotheses of \Cref{lem:equivalence relation}.
+    Check that path objects in a type theoretic weak factorization system satisfy the hypotheses of \Cref{lem:equivalence relation}.
 \end{exercise}
 
 \begin{theorem}[\cite{gambino-garner}]
